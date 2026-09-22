@@ -1,0 +1,1696 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Premium healthcare clinic website demo with doctors, services, timings and online appointments." />
+  <title>CAREOVA — Premium Medical Clinic</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#f5f9f8;
+      --white:#ffffff;
+      --ink:#102321;
+      --muted:#6d7d7a;
+      --primary:#087f72;
+      --primary-dark:#056258;
+      --mint:#dff4ef;
+      --line:#dce8e5;
+      --dark:#102a27;
+      --shadow:0 20px 60px rgba(16,35,33,.10);
+      --radius:24px;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:"DM Sans",sans-serif;
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+
+    img{
+      width:100%;
+      display:block;
+      object-fit:cover;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    button,
+    input,
+    select,
+    textarea{
+      font:inherit;
+    }
+
+    .container{
+      width:min(1160px,92%);
+      margin:auto;
+    }
+
+    /* ================= HEADER ================= */
+
+    header{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      z-index:1000;
+      padding:18px 0;
+      transition:.3s ease;
+    }
+
+    header.scrolled{
+      background:rgba(255,255,255,.92);
+      backdrop-filter:blur(18px);
+      box-shadow:0 8px 30px rgba(0,0,0,.06);
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:25px;
+    }
+
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:11px;
+      font-family:"Manrope",sans-serif;
+      font-size:20px;
+      font-weight:800;
+      letter-spacing:-.5px;
+    }
+
+    .logo-icon{
+      width:42px;
+      height:42px;
+      border-radius:13px;
+      display:grid;
+      place-items:center;
+      background:var(--primary);
+      color:white;
+      font-size:22px;
+      box-shadow:0 8px 22px rgba(8,127,114,.25);
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:30px;
+      color:#415552;
+      font-size:14px;
+      font-weight:600;
+    }
+
+    .nav-links a{
+      transition:.25s;
+    }
+
+    .nav-links a:hover{
+      color:var(--primary);
+    }
+
+    .nav-btn{
+      background:var(--dark);
+      color:#fff;
+      padding:12px 18px;
+      border-radius:999px;
+      font-weight:700;
+      font-size:14px;
+      transition:.3s;
+    }
+
+    .nav-btn:hover{
+      background:var(--primary);
+      transform:translateY(-2px);
+    }
+
+    .menu-btn{
+      display:none;
+      border:0;
+      background:none;
+      font-size:27px;
+      cursor:pointer;
+      color:var(--ink);
+    }
+
+    /* ================= HERO ================= */
+
+    .hero{
+      min-height:100vh;
+      padding:150px 0 80px;
+      display:flex;
+      align-items:center;
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 80% 20%,rgba(8,127,114,.12),transparent 28%),
+        linear-gradient(135deg,#f7fbfa,#edf6f4);
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.02fr .98fr;
+      align-items:center;
+      gap:70px;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:9px;
+      padding:8px 13px;
+      border:1px solid #cce5df;
+      border-radius:999px;
+      color:var(--primary);
+      background:rgba(255,255,255,.65);
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      margin-bottom:22px;
+    }
+
+    .eyebrow span{
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:#23b69f;
+      box-shadow:0 0 0 5px rgba(35,182,159,.12);
+    }
+
+    h1{
+      font-family:"Manrope",sans-serif;
+      font-size:clamp(45px,6vw,76px);
+      line-height:.98;
+      letter-spacing:-4px;
+      max-width:700px;
+      margin-bottom:25px;
+    }
+
+    h1 strong{
+      color:var(--primary);
+    }
+
+    .hero-copy{
+      max-width:560px;
+      font-size:18px;
+      color:var(--muted);
+      margin-bottom:32px;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:13px;
+      margin-bottom:35px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:9px;
+      padding:15px 22px;
+      border-radius:13px;
+      font-weight:800;
+      border:1px solid transparent;
+      transition:.3s ease;
+      cursor:pointer;
+    }
+
+    .btn-primary{
+      background:var(--primary);
+      color:#fff;
+      box-shadow:0 12px 30px rgba(8,127,114,.22);
+    }
+
+    .btn-primary:hover{
+      background:var(--primary-dark);
+      transform:translateY(-3px);
+    }
+
+    .btn-outline{
+      border-color:#cbdcd8;
+      background:white;
+      color:var(--ink);
+    }
+
+    .btn-outline:hover{
+      border-color:var(--primary);
+      color:var(--primary);
+      transform:translateY(-3px);
+    }
+
+    .trust-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:26px;
+      color:#536663;
+      font-size:13px;
+      font-weight:700;
+    }
+
+    .trust-item{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .check{
+      width:23px;
+      height:23px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:var(--mint);
+      color:var(--primary);
+      font-size:12px;
+    }
+
+    .hero-visual{
+      position:relative;
+    }
+
+    .hero-image{
+      height:620px;
+      border-radius:38px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      position:relative;
+    }
+
+    .hero-image img{
+      height:100%;
+    }
+
+    .hero-image::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top,rgba(6,36,32,.42),transparent 50%);
+    }
+
+    .floating-card{
+      position:absolute;
+      z-index:2;
+      background:rgba(255,255,255,.94);
+      backdrop-filter:blur(12px);
+      border:1px solid rgba(255,255,255,.8);
+      box-shadow:var(--shadow);
+      border-radius:20px;
+      padding:18px;
+    }
+
+    .doctor-card{
+      left:-32px;
+      bottom:35px;
+      width:220px;
+    }
+
+    .doctor-card small{
+      color:var(--muted);
+      display:block;
+      margin-bottom:4px;
+    }
+
+    .doctor-card strong{
+      font-family:"Manrope";
+      font-size:17px;
+    }
+
+    .rating{
+      margin-top:10px;
+      color:#e69a22;
+      font-size:13px;
+    }
+
+    .open-card{
+      right:-25px;
+      top:35px;
+      width:180px;
+    }
+
+    .open-status{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      color:#12816f;
+      font-size:12px;
+      font-weight:800;
+      margin-bottom:5px;
+    }
+
+    .open-dot{
+      width:8px;
+      height:8px;
+      background:#20b48e;
+      border-radius:50%;
+    }
+
+    /* ================= SECTIONS ================= */
+
+    section{
+      padding:100px 0;
+    }
+
+    .section-head{
+      max-width:700px;
+      margin-bottom:45px;
+    }
+
+    .section-label{
+      color:var(--primary);
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      margin-bottom:12px;
+    }
+
+    h2{
+      font-family:"Manrope",sans-serif;
+      font-size:clamp(32px,4vw,52px);
+      line-height:1.05;
+      letter-spacing:-2px;
+      margin-bottom:15px;
+    }
+
+    .section-desc{
+      color:var(--muted);
+      font-size:16px;
+    }
+
+    /* ================= SERVICES ================= */
+
+    .services{
+      background:white;
+    }
+
+    .service-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .service-card{
+      padding:30px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:#fff;
+      transition:.3s;
+    }
+
+    .service-card:hover{
+      transform:translateY(-7px);
+      box-shadow:var(--shadow);
+      border-color:#c3ded8;
+    }
+
+    .service-icon{
+      width:52px;
+      height:52px;
+      display:grid;
+      place-items:center;
+      border-radius:16px;
+      background:var(--mint);
+      color:var(--primary);
+      font-size:23px;
+      margin-bottom:22px;
+    }
+
+    .service-card h3{
+      font-family:"Manrope";
+      margin-bottom:8px;
+      font-size:20px;
+    }
+
+    .service-card p{
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    /* ================= DOCTORS ================= */
+
+    .doctors{
+      background:#eef6f4;
+    }
+
+    .doctor-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+    }
+
+    .doctor{
+      background:white;
+      border-radius:25px;
+      overflow:hidden;
+      box-shadow:0 8px 30px rgba(20,60,55,.06);
+    }
+
+    .doctor-image{
+      height:340px;
+      overflow:hidden;
+    }
+
+    .doctor-image img{
+      height:100%;
+      transition:.5s;
+    }
+
+    .doctor:hover img{
+      transform:scale(1.05);
+    }
+
+    .doctor-info{
+      padding:22px;
+    }
+
+    .doctor-info h3{
+      font-family:"Manrope";
+      font-size:20px;
+      margin-bottom:3px;
+    }
+
+    .doctor-role{
+      color:var(--primary);
+      font-size:13px;
+      font-weight:800;
+    }
+
+    .doctor-info p{
+      margin-top:10px;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* ================= APPOINTMENT ================= */
+
+    .appointment{
+      background:var(--dark);
+      color:#fff;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .appointment::before{
+      content:"";
+      position:absolute;
+      width:500px;
+      height:500px;
+      border-radius:50%;
+      background:rgba(8,127,114,.25);
+      filter:blur(80px);
+      right:-150px;
+      top:-200px;
+    }
+
+    .appointment-grid{
+      position:relative;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:60px;
+      align-items:center;
+    }
+
+    .appointment h2{
+      color:white;
+    }
+
+    .appointment p{
+      color:#b8cbc7;
+      max-width:520px;
+      margin-bottom:28px;
+    }
+
+    .appointment-points{
+      display:grid;
+      gap:14px;
+    }
+
+    .appointment-point{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      color:#dbe9e6;
+      font-size:14px;
+    }
+
+    .appointment-point span{
+      width:28px;
+      height:28px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      background:rgba(255,255,255,.1);
+      color:#62d5c2;
+    }
+
+    .booking-box{
+      background:white;
+      color:var(--ink);
+      padding:30px;
+      border-radius:28px;
+      box-shadow:0 25px 70px rgba(0,0,0,.2);
+    }
+
+    .booking-box h3{
+      font-family:"Manrope";
+      font-size:25px;
+      margin-bottom:5px;
+    }
+
+    .booking-box > p{
+      color:var(--muted);
+      font-size:13px;
+      margin-bottom:20px;
+    }
+
+    .form-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+
+    .field.full{
+      grid-column:1/-1;
+    }
+
+    .field label{
+      font-size:12px;
+      font-weight:800;
+      color:#526561;
+    }
+
+    .field input,
+    .field select,
+    .field textarea{
+      width:100%;
+      border:1px solid #dce6e4;
+      border-radius:11px;
+      padding:12px;
+      outline:none;
+      background:#f9fbfa;
+      color:var(--ink);
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus{
+      border-color:var(--primary);
+      background:white;
+    }
+
+    .field textarea{
+      resize:vertical;
+      min-height:80px;
+    }
+
+    .booking-box .btn{
+      width:100%;
+      margin-top:15px;
+    }
+
+    /* ================= TIMINGS ================= */
+
+    .timings{
+      background:white;
+    }
+
+    .timing-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:25px;
+    }
+
+    .timing-box{
+      padding:32px;
+      border:1px solid var(--line);
+      border-radius:25px;
+      background:#fbfdfc;
+    }
+
+    .timing-box h3{
+      font-family:"Manrope";
+      font-size:22px;
+      margin-bottom:20px;
+    }
+
+    .time-row{
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      padding:13px 0;
+      border-bottom:1px solid #e3ece9;
+      font-size:14px;
+    }
+
+    .time-row:last-child{
+      border-bottom:0;
+    }
+
+    .day{
+      font-weight:700;
+    }
+
+    .hours{
+      color:var(--muted);
+      text-align:right;
+    }
+
+    .closed{
+      color:#d25c5c;
+    }
+
+    /* ================= GALLERY ================= */
+
+    .gallery{
+      background:#eef6f4;
+    }
+
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr .9fr;
+      grid-template-rows:250px 250px;
+      gap:14px;
+    }
+
+    .gallery-item{
+      border-radius:20px;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .gallery-item:first-child{
+      grid-row:span 2;
+    }
+
+    .gallery-item img{
+      height:100%;
+      transition:.5s;
+    }
+
+    .gallery-item:hover img{
+      transform:scale(1.06);
+    }
+
+    /* ================= CONTACT ================= */
+
+    .contact{
+      background:white;
+    }
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr;
+      gap:18px;
+    }
+
+    .contact-card{
+      padding:28px;
+      border:1px solid var(--line);
+      border-radius:22px;
+      background:#fbfdfc;
+    }
+
+    .contact-card .icon{
+      font-size:25px;
+      margin-bottom:15px;
+    }
+
+    .contact-card h3{
+      font-family:"Manrope";
+      font-size:18px;
+      margin-bottom:7px;
+    }
+
+    .contact-card p{
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    /* ================= CTA ================= */
+
+    .final-cta{
+      padding:75px 0;
+      background:var(--primary);
+      color:white;
+    }
+
+    .cta-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:30px;
+    }
+
+    .cta-inner h2{
+      max-width:700px;
+      margin:0;
+    }
+
+    .cta-inner .btn{
+      background:white;
+      color:var(--primary);
+      flex-shrink:0;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer{
+      background:#0b1c1a;
+      color:white;
+      padding:55px 0 25px;
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1.5fr 1fr 1fr;
+      gap:50px;
+      padding-bottom:45px;
+      border-bottom:1px solid rgba(255,255,255,.1);
+    }
+
+    .footer-brand p{
+      color:#9eb1ad;
+      max-width:360px;
+      margin-top:15px;
+      font-size:14px;
+    }
+
+    .footer-col h4{
+      margin-bottom:15px;
+      font-family:"Manrope";
+    }
+
+    .footer-col a{
+      display:block;
+      color:#9eb1ad;
+      font-size:14px;
+      margin:9px 0;
+      transition:.2s;
+    }
+
+    .footer-col a:hover{
+      color:white;
+    }
+
+    .footer-bottom{
+      padding-top:22px;
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      color:#78908b;
+      font-size:12px;
+    }
+
+    /* ================= WHATSAPP ================= */
+
+    .whatsapp{
+      position:fixed;
+      right:20px;
+      bottom:20px;
+      width:58px;
+      height:58px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:#20c76a;
+      color:white;
+      font-size:27px;
+      z-index:999;
+      box-shadow:0 10px 30px rgba(32,199,106,.35);
+      transition:.3s;
+    }
+
+    .whatsapp:hover{
+      transform:translateY(-5px) scale(1.04);
+    }
+
+    /* ================= REVEAL ================= */
+
+    .reveal{
+      opacity:0;
+      transform:translateY(25px);
+      transition:.7s ease;
+    }
+
+    .reveal.visible{
+      opacity:1;
+      transform:none;
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media(max-width:950px){
+
+      .nav-links{
+        position:absolute;
+        top:75px;
+        left:4%;
+        width:92%;
+        background:white;
+        padding:20px;
+        border-radius:18px;
+        box-shadow:var(--shadow);
+        display:none;
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .nav-links.active{
+        display:flex;
+      }
+
+      .menu-btn{
+        display:block;
+      }
+
+      .nav-btn{
+        display:none;
+      }
+
+      .hero-grid,
+      .appointment-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero{
+        padding-top:130px;
+      }
+
+      .hero-image{
+        height:500px;
+      }
+
+      .service-grid,
+      .doctor-grid{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .contact-grid{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .cta-inner{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+
+    @media(max-width:650px){
+
+      section{
+        padding:75px 0;
+      }
+
+      h1{
+        font-size:48px;
+        letter-spacing:-2.5px;
+      }
+
+      h2{
+        letter-spacing:-1.5px;
+      }
+
+      .hero-copy{
+        font-size:16px;
+      }
+
+      .hero-image{
+        height:420px;
+        border-radius:27px;
+      }
+
+      .doctor-card{
+        left:12px;
+        bottom:18px;
+      }
+
+      .open-card{
+        right:12px;
+        top:18px;
+      }
+
+      .service-grid,
+      .doctor-grid,
+      .timing-grid,
+      .contact-grid{
+        grid-template-columns:1fr;
+      }
+
+      .gallery-grid{
+        grid-template-columns:1fr 1fr;
+        grid-template-rows:220px 180px;
+      }
+
+      .gallery-item:first-child{
+        grid-row:span 2;
+      }
+
+      .form-grid{
+        grid-template-columns:1fr;
+      }
+
+      .field.full{
+        grid-column:auto;
+      }
+
+      .footer-grid{
+        grid-template-columns:1fr;
+        gap:30px;
+      }
+
+      .footer-bottom{
+        flex-direction:column;
+      }
+
+      .floating-card{
+        padding:14px;
+      }
+
+      .doctor-card{
+        width:190px;
+      }
+
+      .open-card{
+        width:155px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header id="header">
+    <div class="container nav">
+
+      <a href="#home" class="logo">
+        <span class="logo-icon">✚</span>
+        CAREOVA
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#services">Services</a>
+        <a href="#doctors">Doctors</a>
+        <a href="#timings">Timings</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a href="#appointment" class="nav-btn">Book Appointment</a>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+        ☰
+      </button>
+
+    </div>
+  </header>
+
+
+  <!-- HERO -->
+  <main>
+
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+
+        <div class="hero-content reveal">
+
+          <div class="eyebrow">
+            <span></span>
+            Trusted Healthcare · Since 2012
+          </div>
+
+          <h1>
+            Better care.<br>
+            <strong>Better living.</strong>
+          </h1>
+
+          <p class="hero-copy">
+            Compassionate healthcare backed by experienced doctors,
+            modern diagnostics and a patient-first approach.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#appointment" class="btn btn-primary">
+              Book an Appointment →
+            </a>
+
+            <a href="tel:+919999999999" class="btn btn-outline">
+              ☎ Call Clinic
+            </a>
+          </div>
+
+          <div class="trust-row">
+            <div class="trust-item">
+              <span class="check">✓</span>
+              Experienced Doctors
+            </div>
+
+            <div class="trust-item">
+              <span class="check">✓</span>
+              Modern Facilities
+            </div>
+
+            <div class="trust-item">
+              <span class="check">✓</span>
+              Patient First
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="hero-visual reveal">
+
+          <div class="hero-image">
+            <img
+              src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=85"
+              alt="Doctor consulting with patient"
+            >
+          </div>
+
+          <div class="floating-card open-card">
+            <div class="open-status">
+              <span class="open-dot"></span>
+              OPEN TODAY
+            </div>
+            <strong>08:00 AM — 08:00 PM</strong>
+          </div>
+
+          <div class="floating-card doctor-card">
+            <small>Available Today</small>
+            <strong>Dr. Ananya Rao</strong>
+            <div class="rating">★★★★★ <span style="color:#71817e">4.9 Patient Rating</span></div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- SERVICES -->
+    <section class="services" id="services">
+
+      <div class="container">
+
+        <div class="section-head reveal">
+          <div class="section-label">Our Services</div>
+          <h2>Complete care, under one roof.</h2>
+          <p class="section-desc">
+            From preventive checkups to specialist consultations,
+            we make quality healthcare simple and accessible.
+          </p>
+        </div>
+
+        <div class="service-grid">
+
+          <article class="service-card reveal">
+            <div class="service-icon">🩺</div>
+            <h3>General Medicine</h3>
+            <p>
+              Complete consultations, diagnosis and treatment
+              for everyday health concerns.
+            </p>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">❤️</div>
+            <h3>Cardiology</h3>
+            <p>
+              Comprehensive cardiac assessment, prevention
+              and ongoing heart health management.
+            </p>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">🧠</div>
+            <h3>Neurology</h3>
+            <p>
+              Specialist evaluation and care for neurological
+              conditions and concerns.
+            </p>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">👶</div>
+            <h3>Pediatrics</h3>
+            <p>
+              Gentle, child-focused healthcare from newborn
+              care through adolescence.
+            </p>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">🦴</div>
+            <h3>Orthopedics</h3>
+            <p>
+              Diagnosis and treatment for bones, joints,
+              muscles and movement-related conditions.
+            </p>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">🔬</div>
+            <h3>Diagnostics</h3>
+            <p>
+              Reliable laboratory and diagnostic services
+              for faster, informed medical decisions.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- DOCTORS -->
+    <section class="doctors" id="doctors">
+
+      <div class="container">
+
+        <div class="section-head reveal">
+          <div class="section-label">Our Specialists</div>
+          <h2>Meet the people behind your care.</h2>
+          <p class="section-desc">
+            Experienced professionals committed to thoughtful,
+            personalized healthcare.
+          </p>
+        </div>
+
+        <div class="doctor-grid">
+
+          <article class="doctor reveal">
+
+            <div class="doctor-image">
+              <img
+                src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=85"
+                alt="Dr Ananya Rao"
+              >
+            </div>
+
+            <div class="doctor-info">
+              <h3>Dr. Ananya Rao</h3>
+              <div class="doctor-role">MBBS · MD — General Medicine</div>
+              <p>12+ years of clinical experience.</p>
+            </div>
+
+          </article>
+
+
+          <article class="doctor reveal">
+
+            <div class="doctor-image">
+              <img
+                src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=800&q=85"
+                alt="Dr Arjun Mehta"
+              >
+            </div>
+
+            <div class="doctor-info">
+              <h3>Dr. Arjun Mehta</h3>
+              <div class="doctor-role">MBBS · DM — Cardiology</div>
+              <p>15+ years of specialist experience.</p>
+            </div>
+
+          </article>
+
+
+          <article class="doctor reveal">
+
+            <div class="doctor-image">
+              <img
+                src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=800&q=85"
+                alt="Dr Priya Nair"
+              >
+            </div>
+
+            <div class="doctor-info">
+              <h3>Dr. Priya Nair</h3>
+              <div class="doctor-role">MBBS · MD — Pediatrics</div>
+              <p>10+ years caring for children.</p>
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- APPOINTMENT -->
+    <section class="appointment" id="appointment">
+
+      <div class="container appointment-grid">
+
+        <div class="reveal">
+
+          <div class="section-label">Appointments</div>
+
+          <h2>Your health shouldn't have to wait.</h2>
+
+          <p>
+            Schedule your consultation in minutes.
+            Choose your preferred department and we'll get back
+            to you to confirm your appointment.
+          </p>
+
+          <div class="appointment-points">
+
+            <div class="appointment-point">
+              <span>✓</span>
+              Same-day appointments available
+            </div>
+
+            <div class="appointment-point">
+              <span>✓</span>
+              Experienced specialist doctors
+            </div>
+
+            <div class="appointment-point">
+              <span>✓</span>
+              Easy WhatsApp confirmation
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="booking-box reveal">
+
+          <h3>Book a Visit</h3>
+          <p>Fill in your details and we'll contact you shortly.</p>
+
+          <form id="appointmentForm">
+
+            <div class="form-grid">
+
+              <div class="field">
+                <label>Full Name</label>
+                <input id="name" type="text" placeholder="Your name" required>
+              </div>
+
+              <div class="field">
+                <label>Phone</label>
+                <input id="phone" type="tel" placeholder="+91" required>
+              </div>
+
+              <div class="field">
+                <label>Department</label>
+                <select id="department">
+                  <option>General Medicine</option>
+                  <option>Cardiology</option>
+                  <option>Neurology</option>
+                  <option>Pediatrics</option>
+                  <option>Orthopedics</option>
+                  <option>Diagnostics</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label>Preferred Date</label>
+                <input id="date" type="date" required>
+              </div>
+
+              <div class="field full">
+                <label>Message</label>
+                <textarea id="message" placeholder="Tell us briefly about your concern..."></textarea>
+              </div>
+
+            </div>
+
+            <button class="btn btn-primary" type="submit">
+              Request Appointment →
+            </button>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- TIMINGS -->
+    <section class="timings" id="timings">
+
+      <div class="container">
+
+        <div class="section-head reveal">
+          <div class="section-label">Clinic Timings</div>
+          <h2>We're here when you need us.</h2>
+          <p class="section-desc">
+            Flexible consultation hours throughout the week.
+          </p>
+        </div>
+
+        <div class="timing-grid">
+
+          <div class="timing-box reveal">
+
+            <h3>General Clinic</h3>
+
+            <div class="time-row">
+              <span class="day">Monday — Friday</span>
+              <span class="hours">08:00 AM — 08:00 PM</span>
+            </div>
+
+            <div class="time-row">
+              <span class="day">Saturday</span>
+              <span class="hours">09:00 AM — 05:00 PM</span>
+            </div>
+
+            <div class="time-row">
+              <span class="day">Sunday</span>
+              <span class="hours closed">Closed</span>
+            </div>
+
+          </div>
+
+
+          <div class="timing-box reveal">
+
+            <h3>Emergency Support</h3>
+
+            <div class="time-row">
+              <span class="day">Emergency Care</span>
+              <span class="hours">24 / 7</span>
+            </div>
+
+            <div class="time-row">
+              <span class="day">Phone Support</span>
+              <span class="hours">24 / 7</span>
+            </div>
+
+            <div class="time-row">
+              <span class="day">Appointments</span>
+              <span class="hours">Online Available</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ABOUT / GALLERY -->
+    <section class="gallery" id="about">
+
+      <div class="container">
+
+        <div class="section-head reveal">
+          <div class="section-label">Inside Careova</div>
+          <h2>Designed around your comfort.</h2>
+          <p class="section-desc">
+            A calm environment, modern facilities and a team
+            focused on making every visit easier.
+          </p>
+        </div>
+
+        <div class="gallery-grid">
+
+          <div class="gallery-item reveal">
+            <img
+              src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1000&q=85"
+              alt="Modern clinic interior"
+            >
+          </div>
+
+          <div class="gallery-item reveal">
+            <img
+              src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=800&q=85"
+              alt="Hospital corridor"
+            >
+          </div>
+
+          <div class="gallery-item reveal">
+            <img
+              src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=800&q=85"
+              alt="Medical consultation room"
+            >
+          </div>
+
+          <div class="gallery-item reveal">
+            <img
+              src="https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=800&q=85"
+              alt="Healthcare professional"
+            >
+          </div>
+
+          <div class="gallery-item reveal">
+            <img
+              src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=85"
+              alt="Medical equipment"
+            >
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+
+      <div class="container">
+
+        <div class="section-head reveal">
+          <div class="section-label">Contact Us</div>
+          <h2>Let's take care of what's important.</h2>
+        </div>
+
+        <div class="contact-grid">
+
+          <div class="contact-card reveal">
+            <div class="icon">📍</div>
+            <h3>Visit Us</h3>
+            <p>
+              24 Health Avenue,<br>
+              Salem, Tamil Nadu — 636001
+            </p>
+          </div>
+
+          <div class="contact-card reveal">
+            <div class="icon">☎</div>
+            <h3>Call Us</h3>
+            <p>
+              +91 99999 99999<br>
+              Mon — Sat · 8 AM — 8 PM
+            </p>
+          </div>
+
+          <div class="contact-card reveal">
+            <div class="icon">✉</div>
+            <h3>Email</h3>
+            <p>
+              hello@careova.com<br>
+              support@careova.com
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- FINAL CTA -->
+    <section class="final-cta">
+
+      <div class="container cta-inner">
+
+        <h2>
+          Ready to put your health first?
+        </h2>
+
+        <a
+          href="https://wa.me/919999999999?text=Hello%20CAREOVA,%20I%20would%20like%20to%20book%20an%20appointment."
+          target="_blank"
+          class="btn"
+        >
+          WhatsApp Appointment →
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+
+          <a href="#home" class="logo">
+            <span class="logo-icon">✚</span>
+            CAREOVA
+          </a>
+
+          <p>
+            Premium healthcare built around people,
+            technology and better outcomes.
+          </p>
+
+        </div>
+
+        <div class="footer-col">
+          <h4>Clinic</h4>
+          <a href="#services">Services</a>
+          <a href="#doctors">Doctors</a>
+          <a href="#timings">Timings</a>
+          <a href="#appointment">Appointments</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <a href="tel:+919999999999">+91 99999 99999</a>
+          <a href="mailto:hello@careova.com">hello@careova.com</a>
+          <a
+            href="https://maps.google.com/?q=Salem,Tamil Nadu"
+            target="_blank"
+          >
+            Google Maps →
+          </a>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 CAREOVA Clinic. All rights reserved.</span>
+        <span>Website by DataNova Studio</span>
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- WHATSAPP -->
+  <a
+    class="whatsapp"
+    href="https://wa.me/919999999999?text=Hello%20CAREOVA,%20I%20would%20like%20to%20book%20an%20appointment."
+    target="_blank"
+    aria-label="WhatsApp appointment"
+  >
+    ☎
+  </a>
+
+
+  <script>
+
+    /* Header */
+    const header = document.getElementById("header");
+
+    window.addEventListener("scroll", () => {
+      header.classList.toggle("scrolled", window.scrollY > 30);
+    });
+
+
+    /* Mobile Menu */
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+      });
+    });
+
+
+    /* Scroll Reveal */
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      {
+        threshold:0.12
+      }
+    );
+
+    document.querySelectorAll(".reveal").forEach(el => {
+      observer.observe(el);
+    });
+
+
+    /* Appointment Form → WhatsApp */
+    document.getElementById("appointmentForm").addEventListener("submit", function(e){
+
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const phone = document.getElementById("phone").value;
+      const department = document.getElementById("department").value;
+      const date = document.getElementById("date").value;
+      const message = document.getElementById("message").value;
+
+      const text =
+        `Hello CAREOVA,%0A%0A` +
+        `I would like to request an appointment.%0A%0A` +
+        `Name: ${encodeURIComponent(name)}%0A` +
+        `Phone: ${encodeURIComponent(phone)}%0A` +
+        `Department: ${encodeURIComponent(department)}%0A` +
+        `Preferred Date: ${encodeURIComponent(date)}%0A` +
+        `Message: ${encodeURIComponent(message)}`;
+
+      window.open(
+        `https://wa.me/919999999999?text=${text}`,
+        "_blank"
+      );
+
+    });
+
+  </script>
+
+</body>
+</html>
+```
